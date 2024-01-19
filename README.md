@@ -22,5 +22,6 @@ For training, training imagery should be stored under <data_path>/images. These 
 **Evaluate:**
 ```python srcnn.py --action test --data_path data --model_path models/custom_weights.h5```
 
-**Run:**
-```python srcnn.py --action run --data_path data --model_path models/custom_weights.h5 --output_path model_results```
+
+**Run: (Currently Broken)**
+```python srcnn.py --action run --data_path evaluate --model_path models/custom_weights.h5 --output_path results```

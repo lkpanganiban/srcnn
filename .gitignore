@@ -7,3 +7,4 @@ data/test/*.jpg
 data/test_labels/*.jpg
 data/train_labels/*.jpg
 *.h5
+tmp/

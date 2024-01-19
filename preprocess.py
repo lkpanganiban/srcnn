@@ -6,10 +6,8 @@ from PIL import Image
 from sklearn.model_selection import train_test_split
 
 from util import RAW_PATH, TRAIN_PATH, TEST_PATH, clean_mkdir, ROWS, COLS, IMAGES_PATH, TEST_LABELS_PATH, TRAIN_LABELS_PATH
-Image.MAX_IMAGE_PIXELS = 1933120000
 
-
-def split_image_into_grids(data_path, image_path, size=(400,400)):
+def split_image_into_grids(data_path, image_path):
     output_path = str(Path(data_path) / "tmp")
     filename = PurePath(image_path).stem
     img_src = Image.open(image_path)
@@ -19,10 +17,11 @@ def split_image_into_grids(data_path, image_path, size=(400,400)):
     i_step = int(COLS / 2)
     j_step = int(ROWS / 2)
     img_arr = []
+    os.makedirs(output_path + "/" + filename, exist_ok=True)
     for i in range(0, cols - COLS - 1, i_step):
         for j in range(0, rows - ROWS - 1, j_step):
             img_crop = img_src.crop((i, j, i + ROWS, j + COLS))
-            img_crop_output = "{}/{}_{:05d}.png".format(output_path, filename, count)
+            img_crop_output = "{}/{}/{:05d}_{:05d}.png".format(output_path, filename, i, j)
             img_crop.save(img_crop_output)
             count += 1
             img_arr.append(img_crop_output)

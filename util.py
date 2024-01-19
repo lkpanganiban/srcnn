@@ -25,7 +25,7 @@ def load_data(x_path, y_path=None):
     x, y = [], []
     index = 0
     for file in os.listdir(x_path):
-        if file.split(".")[-1] not in ["jpg", "png"]:
+        if file.split(".")[-1] not in ["jpg", "png", "tiff"]:
             continue
         index += 1
         img = Image.open(x_path + file)
