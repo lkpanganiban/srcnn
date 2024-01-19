@@ -17,10 +17,10 @@ Based on: https://arxiv.org/pdf/1501.00092.pdf
 
 For training, training imagery should be stored under <data_path>/images. These images will automatically be cropped and processed for training/testing. There is an example image already in this directory and an easy way to accumulate more is using Google Maps.
 
-```python srcnn.py --action train --data_path data/```
+```python srcnn.py --action train --data_path data --epoch 50 --batch_size=128 --model_path models/custom_weights.h5```
 
 **Evaluate:**
-```python srcnn.py --action test --data_path data/ --model_path models/weights2.h5```
+```python srcnn.py --action test --data_path data --model_path models/custom_weights.h5```
 
 **Run:**
-```python srcnn.py --action run --data_path data/ --model_path models/weights2.h5 --output_path model_results```
+```python srcnn.py --action run --data_path data --model_path models/custom_weights.h5 --output_path model_results```
