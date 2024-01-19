@@ -1,12 +1,12 @@
 from keras import Sequential
 from keras.layers import Convolution2D
-
+from util import ROWS, COLS, CHANNELS
 
 def get_model(weights_path=None):
     model = Sequential()
     model.add(
         Convolution2D(
-            32, 9, activation="relu", input_shape=(400, 400, 3), padding="same"
+            32, 9, activation="relu", input_shape=(ROWS, COLS, CHANNELS), padding="same"
         )
     )
     model.add(Convolution2D(16, 5, activation="relu", padding="same"))

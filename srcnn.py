@@ -8,13 +8,17 @@ from keras.callbacks import ModelCheckpoint
 from model import get_model
 from preprocess import preprocess_dataset
 from util import clean_mkdir, load_data
+import tensorflow as tf
+tf.config.experimental.set_memory_growth(tf.config.list_physical_devices('GPU')[0], True)
 
 
 def train(data_path, model_path, epochs=10, batch_size=32):
     preprocess_dataset(data_path)
-    train_path = str(data_path / "train")
-    train_labels_path = str(data_path / "train_labels")
-    clean_mkdir("checkpoints")
+    data_path = Path(data_path)
+    print( str(data_path / "train")+'/' )
+    train_path = str(data_path / "train")+'/'
+    train_labels_path = str(data_path / "train_labels")+'/'
+    # clean_mkdir("checkpoints")
     checkpointer = ModelCheckpoint(
         filepath="checkpoints/weights.h5", verbose=1, save_best_only=True
     )
@@ -59,6 +63,9 @@ def run(data_path, model_weights_path, output_path):
 
 
 if __name__ == "__main__":
+    '''
+    python srcnn.py --action train --data_path data/ --epoch 50 --batch_size=64
+    '''
     parser = argparse.ArgumentParser(description="Train/evaluate/run SRCNN models")
     parser.add_argument(
         "--action",
@@ -86,7 +93,7 @@ if __name__ == "__main__":
     )
     params = parser.parse_args()
     if params.action == "train":
-        train(params.data_path, params.epochs, params.batch_size, params.model_path)
+        train(params.data_path, params.model_path, params.epochs, params.batch_size)
     elif params.action == "test":
         test(params.data_path, params.model_path)
     elif params.action == "run":

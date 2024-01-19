@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-
+import shutil#sadra
 import numpy as np
 from PIL import Image
 
@@ -17,9 +17,11 @@ MAX_VAL = 2 ** 8 - 1
 
 def clean_mkdir(path):
     if Path(path).exists():
+        print('sadrasxxs',path)
+        shutil.rmtree(path, ignore_errors=True)#sadra
         os.rmdir(path)
-
-    os.makedirs(path)
+    print('sadra',path)
+    os.makedirs(path, exist_ok=True)
 
 
 def load_data(x_path, y_path=None):
@@ -32,7 +34,7 @@ def load_data(x_path, y_path=None):
         img_array = img_array / (MAX_VAL * 1.0)
         x.append(img_array)
 
-        if y_path is None:
+        if y_path is not None:
             img = Image.open(y_path + file)
             img_array = np.asarray(img, dtype="uint8")
             img_array = img_array / (MAX_VAL * 1.0)

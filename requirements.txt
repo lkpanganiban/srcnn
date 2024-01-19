@@ -2,3 +2,4 @@ PIL
 numpy
 keras
 argparse
+scikit-learn
