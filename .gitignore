@@ -6,3 +6,4 @@ data/train/*.jpg
 data/test/*.jpg
 data/test_labels/*.jpg
 data/train_labels/*.jpg
+checkpoints/*.h5

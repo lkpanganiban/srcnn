@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-import shutil#sadra
+import shutil
 import numpy as np
 from PIL import Image
 
@@ -17,9 +17,7 @@ MAX_VAL = 2 ** 8 - 1
 
 def clean_mkdir(path):
     if Path(path).exists():
-        print('sadrasxxs',path)
-        shutil.rmtree(path, ignore_errors=True)#sadra
-    print('sadra',path)
+        shutil.rmtree(path, ignore_errors=True)
     os.makedirs(path, exist_ok=True)
 
 
