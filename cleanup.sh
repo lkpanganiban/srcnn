@@ -1,2 +1,5 @@
-rm -rf data/train/* data/train_labels/* data/test_labels/* data/test/* data/raw/*
-rm -rf data/train/* data/train_labels/* data/test_labels/* data/test/* data/raw/*
+find data/train/ -name "*.jpg" -delete
+find data/test/ -name "*.jpg" -delete
+find data/train_labels/ -name "*.jpg" -delete
+find data/test_labels/ -name "*.jpg" -delete
+find data/raw/ -name "*.jpg" -delete

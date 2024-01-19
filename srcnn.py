@@ -9,8 +9,8 @@ from model import get_model
 from preprocess import preprocess_dataset
 from util import clean_mkdir, load_data
 import tensorflow as tf
-tf.config.experimental.set_memory_growth(tf.config.list_physical_devices('GPU')[0], True)
 
+tf.config.experimental.set_memory_growth(tf.config.list_physical_devices('GPU')[0], True)
 
 def train(data_path, model_path, epochs=10, batch_size=32):
     preprocess_dataset(data_path)
@@ -79,6 +79,7 @@ if __name__ == "__main__":
         type=str,
         help="Filepath of a saved model to use for eval or inference or"
         + "filepath where to save a newly trained model.",
+        default="checkpoints/final_weights.h5",
     )
     parser.add_argument(
         "--output_path", type=str, help="Filepath to output results from run action"

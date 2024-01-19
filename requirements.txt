@@ -3,3 +3,4 @@ numpy
 keras
 argparse
 scikit-learn
+tensorflow
