@@ -16,10 +16,8 @@ tf.config.experimental.set_memory_growth(tf.config.list_physical_devices('GPU')[
 def train(data_path, model_path, epochs=10, batch_size=32):
     preprocess_dataset(data_path)
     data_path = Path(data_path)
-    print( str(data_path / "train")+'/' )
     train_path = str(data_path / "train")+'/'
     train_labels_path = str(data_path / "train_labels")+'/'
-    # clean_mkdir("checkpoints")
     checkpointer = ModelCheckpoint(
         filepath="checkpoints/weights.h5", verbose=1, save_best_only=True
     )
